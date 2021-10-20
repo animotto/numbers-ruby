@@ -50,7 +50,9 @@ RSpec.describe Numbers do
   it 'Selects two numbers and strikes out them' do
     numbers = Numbers.new
     expect { numbers.select(-5, 4) }.to raise_error(ArgumentError)
+    expect { numbers.select(15, -16) }.to raise_error(ArgumentError)
     expect { numbers.select(5, 42) }.to raise_error(ArgumentError)
+    expect { numbers.select(51, 5) }.to raise_error(ArgumentError)
     expect { numbers.select(8, 8) }.to raise_error(ArgumentError)
 
     examples = JSON.parse(File.read('spec/numbers/select.json'))
